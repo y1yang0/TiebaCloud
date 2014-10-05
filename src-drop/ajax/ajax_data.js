@@ -1,0 +1,13 @@
+$("#submit_tieba_data").click(function(){
+$.ajax({
+    url:"ajax/ajax.php",
+    type:"POST",
+    data:{tieba_name:$("input#tieba_name").val(),submit_tieba_data:"submit_tieba_data"},
+    success:function(data)
+    {
+        $("#search").hide();
+        $("#search_2").show();
+        $("#append").append(data);
+    }
+});
+});
