@@ -3,7 +3,7 @@ require_once('api.php');
 $file_list = get_update_file();
 if(isset($_POST['confirm']))
 {
-	if(empty($file_list))
+	if($file_list[0]!=='')
 	{
 		$file_content = array();
 		for ($i=0; $i < count($file_list); $i++)
@@ -37,7 +37,7 @@ if(isset($_POST['confirm']))
 <div class="modal-body">
 <div class="jumbotron">
   <?php
-  if(empty($file_list)) 
+  if($file_list[0]=='') 
   {
     echo '<h1>Just enjoy it!</h1>';
   }else{
