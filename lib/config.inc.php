@@ -5,4 +5,5 @@
 				define("DB_NAME","tiebacloud");
 				define("ADMIN_PASSWORD","123");
 				define("ADMIN_NAME","admin");
+				define("VER","1.0");
 				?>

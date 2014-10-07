@@ -10,6 +10,7 @@ if (!$fp) {
 				define("DB_NAME","'.$_POST['db_name'].'");
 				define("ADMIN_PASSWORD","'.$_POST['admin_password'].'");
 				define("ADMIN_NAME","'.$_POST['admin_name'].'");
+				define("VER","1.0");
 				?>';
 	fwrite($fp,$content);
     fclose($fp);

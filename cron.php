@@ -11,7 +11,6 @@ if (mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD)) {
 		$s=mysql_query('SELECT * FROM tc_tmp WHERE uid=1');
 		$count=mysql_fetch_array($s);
 		$all = mysql_num_rows(mysql_query('SELECT uid FROM tc_tieba WHERE 1'));
-				//$count[1]
 		if($count[1]+N<=$all)
 		{
 			for ($i=0; $i < N; $i++) { 
