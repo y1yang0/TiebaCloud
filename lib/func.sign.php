@@ -45,7 +45,6 @@ function html_analysis($value)
 function client_sign($cookie, $tieba)
 {
 	preg_match('/BDUSS=([^ ;]+)/i', $cookie, $matches);
-	//$BDUSS = trim($matches[1]);
 	$BDUSS = $matches[1];
 	$ch = curl_init('http://c.tieba.baidu.com/c/c/forum/sign');
 	$tbs = confirmation($cookie);
@@ -91,17 +90,6 @@ function get_list($cookie)
 {
 	$list = html_analysis(get_liked_tieba($cookie));
 	return $list;
-	/*
-	for ($i=0; $i < count($list,COUNT_RECURSIVE); $i++) { 
-		client_sign($cookie,array('fid' => $list[$i]['balvid'], 'url' => $list[$i]['url']));
-		sleep(2);
-	}*/
-	/*for ($i=0; $i < count($list); $i++)
-	{
-		for ($k=0; $k < count($list[$i]['url']); $k++) { 
-			client_sign($cookie,array('fid' => $list[$i]['balvid'][$k], 'url' => $list[$i]['url'][$k]));
-		}	
-	}*/
 }
 function lets_do_it($cookie,$fid,$url)
 {

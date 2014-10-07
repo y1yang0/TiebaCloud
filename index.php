@@ -29,8 +29,8 @@ if(isset($_SESSION['u']))
 					'<form action="./lib/bind.php" method="post"><div class="alert alert-warning alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">
 					Close</span></button><strong>注意:</strong> 你还没有绑定账号，请将你的百度账号cookie粘贴至下面输入框</div>
-					<div class="modal-body"><div class="col-lg-6"><div class="input-group">
-					<input type="text" name="cookie" id="cookie" class="form-control" placeholder="输入cookie,通常格式是 BDUSS=... ">
+					<div class="modal-body"><div class="col-lg-15"><div class="input-group">
+					<input type="text" name="cookie" id="cookie" class="form-control" placeholder="输入cookie,格式是 BDUSS=... ">
 					<span class="input-group-btn"><button class="btn btn-default" type="submit" name="bind">Go!</button>
 					</span></div></div></form>';
         		}else{

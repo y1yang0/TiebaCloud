@@ -23,11 +23,11 @@
     </div>
     <div class="modal-body">
         <form class="form col-md-12 center-block" method="post"action="./lib/account.php">
-            <div class="form-group">
+            <div  class="form-group">
             <input name="username" class="form-control input-lg" placeholder="输入用户名">
             </div>
-            <div class="form-group">
-            <input name="password" type="password"class="form-control input-lg" placeholder="输入密码">
+            <div  class="form-group">
+            <input  name="password" type="password"class="form-control input-lg" placeholder="输入密码">
             </div>
             <div class="form-group ">
             <button name="reg"class="btn btn-primary btn-lg btn-block">确认注册</button>
