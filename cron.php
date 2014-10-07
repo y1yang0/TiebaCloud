@@ -17,7 +17,7 @@ if (mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD)) {
 				$count[1]++;
 				$s=mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]);
 				$ret=mysql_fetch_array($s);
-				lets_do_it($ret['cookie'],$ret['fid'],$ret['url']);
+				lets_do_it(base64_decode($ret['cookie']),$ret['fid'],$ret['url']);
 			}
 			mysql_query('UPDATE tc_tmp SET count='.$count[1].' WHERE uid=1');
 
@@ -27,7 +27,7 @@ if (mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD)) {
 				$count[1]++;
 				$s=mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]);
 				$ret=mysql_fetch_array($s);
-				lets_do_it($ret['cookie'],$ret['fid'],$ret['url']);
+				lets_do_it(base64_decode($ret['cookie']),$ret['fid'],$ret['url']);
 			}
 			mysql_query('UPDATE tc_tmp SET count=0 WHERE uid=1');
 		}

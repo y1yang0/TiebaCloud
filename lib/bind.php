@@ -22,7 +22,7 @@ if(isset($_POST['bind']))
 				$list = get_list($_POST['cookie']);
 				for ($i=0; $i < count($list); $i++) { 
 					for ($k=0; $k < count($list[$i]['url']); $k++) { 
-						mysql_query('INSERT INTO tc_tieba(cookie,fid,url) VALUES("'.$_POST['cookie'].'","'.$list[$i]['balvid'][$k].'","'.$list[$i]['url'][$k].'")');
+						mysql_query('INSERT INTO tc_tieba(cookie,fid,url) VALUES("'.base64_encode($_POST['cookie']).'","'.$list[$i]['balvid'][$k].'","'.$list[$i]['url'][$k].'")');
 					}
 				}
 				echo '<p>account bind success!</p><script type="text/javascript">
