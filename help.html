@@ -1,0 +1,33 @@
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Tieba Cloud - Help</title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+	<link href="stylesheets/styles.css" rel="stylesheet">
+</head>
+<body>
+<div  class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="text-center">贴吧云 - 帮助</h1>
+    </div>
+    <div class="modal-body">
+    <h4>#怎么安装它?</h4>
+    <p>首先上传程序,然后进入/install安装,安装完成后你需要为cron.php添加一个计划任务,通常你可以到<a  href="http://www.aliyun.com/product/jiankong/" target="_blank">阿里云监控</a>免费使用它的监控.</p>
+    <h4>#为什么京东云安装失败?</h4>
+    <p>填写数据库地址为<code>mysql.jae.jd.com:4066</code>即可安装.</p>
+    <h4>#能否加快签到速度?</h4>
+    <p>找到cron.php文件里面的<code>define("N",5);</code>这一段,数字代表每次执行签到的贴吧数目,你可以根据需要自行修改,不过需要注意如果数值太大通常你的服务器会强制终止运行,你可以在cron.php的<code>define("N",5)</code> 前面添加一行代码<code>set_time_limit(0);</code>取消服务器限制.</p>
+    <h4>#还有其它问题或者建议?</h4>
+    <p>请发送至邮箱1948638989@qq.com</p>
+    </div>
+    <div class="modal-footer"><div class="col-md-12">
+    <p align="center">&copy;2014 <a href="https://github.com/racaljk">racaljk</a>,remember your dream.</p>
+    </div></div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+</body>
