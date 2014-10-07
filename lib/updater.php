@@ -3,11 +3,19 @@ require_once('api.php');
 $file_list = get_update_file();
 if(isset($_POST['confirm']))
 {
-  $file_content = array();
-  for ($i=0; $i < count($file_list); $i++) { 
-    $file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
-  }
-  print_r($file_content);
+	if(empty($file_list))
+	{
+		$file_content = array();
+		for ($i=0; $i < count($file_list); $i++)
+		{ 
+			$file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
+			$url = dirname(dirname(__FILE__)).'\\'.str_replace('/', '\\', $file_list[$i])."<br>";
+			$fp = fopen($url, 'w');
+			fwrite($fp,$file_content[$i]);
+			fclose($fp);
+		}
+		header('location:../index.php');
+	}
 }
 ?>
 <head>	
@@ -41,7 +49,7 @@ if(isset($_POST['confirm']))
   }
   ?>
 </div>
-<form method="post" action="updater.php"><span class="label label-danger">更新时请不要关闭电源.请确保网络通畅,否则可能出错.
+<form method="post" action="updater.php"><span class="label label-danger">更新时请不要关闭电源.请确保网络通畅,否则可能出错.更新完成会自动跳转到主页.
 </span><br><br><button class="btn btn-primary" type="submit" name="confirm">更新文件</button></form></div><div class="modal-footer">
 <div class="col-md-12"><p align="center">&copy;2014 <a href="https://github.com/racaljk">racaljk</a>,remember your dream.</p>
 </div>	</div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
