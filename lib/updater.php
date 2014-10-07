@@ -9,7 +9,7 @@ if(isset($_POST['confirm']))
 		for ($i=0; $i < count($file_list); $i++)
 		{ 
 			$file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
-			$url = dirname(dirname(__FILE__)).'\\'.str_replace('/', '\\', $file_list[$i])."<br>";
+			$url = dirname(dirname(__FILE__))."\\".str_replace('/', "\\", $file_list[$i]);
 			$fp = fopen($url, 'w');
 			fwrite($fp,$file_content[$i]);
 			fclose($fp);

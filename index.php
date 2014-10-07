@@ -9,9 +9,7 @@ if(!($version===$b))
 {
 	header('location:./lib/updater.php');
 }
-
 $info = '';
-
 if(isset($_SESSION['u']))
 {
 	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
