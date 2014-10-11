@@ -1,15 +1,10 @@
 <?php
 session_start();
-require_once('./lib/config.inc.php');
-require_once('./lib/api.php');
+require('./lib/config.inc.php');
+require('./lib/api.php');
 
-$version =get_version();
-$b =VER;
-if(!($version===$b))
-{
-	header('location:./lib/updater.php');
-}
 $info = '';
+
 if(isset($_SESSION['u']))
 {
 	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
@@ -73,7 +68,7 @@ if(isset($_SESSION['u']))
 			</div>
 			<div class="modal-footer">
 				<div class="col-md-12">
-					<p align="center">&copy;2014 <a href="https://github.com/racaljk">racaljk</a>,remember your dream.</p>
+				  <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
 				</div>	
 			</div>
 		</div>

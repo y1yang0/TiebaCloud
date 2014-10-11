@@ -15,19 +15,20 @@ if (mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD)) {
 		{
 			for ($i=0; $i < N; $i++) { 
 				$count[1]++;
-				$s=mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]);
-				$ret=mysql_fetch_array($s);
-				lets_do_it(base64_decode($ret['cookie']),$ret['fid'],$ret['url']);
+				$res_fidurl =mysql_fetch_array(mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]));
+				$res_cookie = mysql_fetch_array(mysql_query('SELECT cookie FROM tc_user WHERE username="'.$res_fidurl['username'].'"'));
+				lets_do_it(base64_decode($res_cookie['cookie']),$res_fidurl['fid'],$res_fidurl['url']);
 			}
 			mysql_query('UPDATE tc_tmp SET count='.$count[1].' WHERE uid=1');
 
 		}else
 		{
-			for ($i=0; $i < $all%N; $i++) { 
+			$loop_time = $all%N;
+			for ($i=0; $i < $loop_time; $i++) { 
 				$count[1]++;
-				$s=mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]);
-				$ret=mysql_fetch_array($s);
-				lets_do_it(base64_decode($ret['cookie']),$ret['fid'],$ret['url']);
+				$res_fidurl =mysql_fetch_array(mysql_query('SELECT * FROM tc_tieba WHERE uid='.$count[1]));
+				$res_cookie = mysql_fetch_array(mysql_query('SELECT cookie FROM tc_user WHERE username="'.$res_fidurl['username'].'"'));
+				lets_do_it(base64_decode($res_cookie['cookie']),$res_fidurl['fid'],$res_fidurl['url']);
 			}
 			mysql_query('UPDATE tc_tmp SET count=0 WHERE uid=1');
 		}

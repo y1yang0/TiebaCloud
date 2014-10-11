@@ -51,6 +51,6 @@ if(isset($_POST['confirm']))
 </div>
 <form method="post" action="updater.php"><span class="label label-danger">更新时请不要关闭电源.请确保网络通畅,否则可能出错.更新完成会自动跳转到主页.
 </span><br><br><button class="btn btn-primary" type="submit" name="confirm">更新文件</button></form></div><div class="modal-footer">
-<div class="col-md-12"><p align="center">&copy;2014 <a href="https://github.com/racaljk">racaljk</a>,remember your dream.</p>
-</div>	</div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script src="../javascripts/bootstrap.min.js"></script></body>
+<div class="col-md-12"><p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">
+侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p></div></div></div></div></div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script><script src="../javascripts/bootstrap.min.js"></script></body>

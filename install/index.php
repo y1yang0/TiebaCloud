@@ -47,7 +47,7 @@ if(filesize('../lib/config.inc.php')>5)
     </div>
     <div class="modal-footer">
         <div class="col-md-12">
-        <p align="center">&copy;2014 <a href="https://github.com/racaljk">racaljk</a>,remember your dream.</p>
+        <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
         </div>	
     </div>
 </div>
