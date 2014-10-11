@@ -13,11 +13,15 @@ if(isset($_POST['reg']))
 		}else{
 			if(mysql_select_db(DB_NAME))
 			{
+				if($res=mysql_fetch_array(mysql_query('SELECT * FROM tc_user WHERE username="'.$_POST['username'].'"')))
+				{
+					echo '账号已经存在';
+				}else{
 				mysql_query('set names utf8');
 				mysql_query('INSERT INTO tc_user(username,password) VALUES("'.$_POST['username'].'","'.md5($_POST['password']).'")');
 				mysql_query('INSERT INTO tc_baiduinfo(tc_id) VALUES("'.$_POST['username'].'")');
 				echo '<p>注册成功!</p><script type="text/javascript"> 
-					setTimeout(window.location.href="../login.php",3000); </script>';
+					setTimeout(window.location.href="../login.php",3000); </script>';}
 			}else{
 				die("select database name error,check your config.inc.php.");
 			}

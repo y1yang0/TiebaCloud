@@ -13,6 +13,11 @@ if(isset($_POST['confirm']))
 			$fp = fopen($url, 'w');
 			fwrite($fp,$file_content[$i]);
 			fclose($fp);
+      $fp_v = fopen('ver.php', 'w');
+      $content = '<?php
+      define("TC_VER","'.get_version().'")?>';
+      fwrite($fp_v,$content);
+      fclose($fp_v);
 		}
 		header('location:../index.php');
 	}

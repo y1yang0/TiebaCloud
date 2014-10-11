@@ -1,7 +1,8 @@
 <?php
 $fp = fopen('config.inc.php', 'w');
-if (!$fp) {
-	die('config.inc.php file not exist.');
+$fp1 = fopen('ver.php', 'w');
+if (!$fp||!$fp1) {
+	die('config.inc.php or ver.php file not exist.');
 }else {
 	$content = '<?php header("Content-Type: text/html;charset=utf-8");
 				define("DB_IP","'.$_POST['db_ip'].'");
@@ -11,8 +12,13 @@ if (!$fp) {
 				define("ADMIN_PASSWORD","'.$_POST['admin_password'].'");
 				define("ADMIN_NAME","'.$_POST['admin_name'].'");
 				?>';
+	$content_ver = '<?php
+				define("TC_VER","1.0");
+				?>';
 	fwrite($fp,$content);
+	fwrite($fp1,$content_ver);
     fclose($fp);
+    fclose($fp1);
 }
 
 $con = mysql_connect($_POST['db_ip'],$_POST['db_username'],$_POST['db_password']);
