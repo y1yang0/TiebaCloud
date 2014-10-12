@@ -13,7 +13,7 @@ if (!$fp||!$fp1) {
 				define("ADMIN_NAME","'.$_POST['admin_name'].'");
 				?>';
 	$content_ver = '<?php
-				define("TC_VER","1.0");
+				define("TC_VER","1.5");
 				?>';
 	fwrite($fp,$content);
 	fwrite($fp1,$content_ver);

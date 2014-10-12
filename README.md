@@ -1,6 +1,6 @@
 #Tieba Cloud
 
-![test](http://img.shields.io/badge/language-php-orange.svg)    ![test](http://img.shields.io/badge/building-80%-green.svg)<br>
+![test](http://img.shields.io/badge/language-php-orange.svg)    ![test](http://img.shields.io/badge/building-90%-green.svg)<br>
 贴吧云用于百度各种服务;现在暂时只支持贴吧云签到
 
 ##环境要求

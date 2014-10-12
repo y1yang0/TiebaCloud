@@ -37,7 +37,7 @@ if(isset($_POST['reg']))
 		if(mysql_select_db(DB_NAME))
 		{
 			$ret = mysql_query('SELECT * FROM tc_user WHERE username ="'.$_POST['log_username'].'"AND password ="'.md5($_POST['log_password']).'"');
-			if($res = @mysql_fetch_array($ret))
+			if($res = mysql_fetch_array($ret))
 			{
 				session_start();
 				$_SESSION["u"] = $_POST['log_username'];
