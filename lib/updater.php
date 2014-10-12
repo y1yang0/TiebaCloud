@@ -1,26 +1,33 @@
 <?php
 require_once('api.php');
+require('ver.php');
+$version =get_version();
+$local_v = TC_VER;
+
 $file_list = get_update_file();
 if(isset($_POST['confirm']))
 {
-	if($file_list[0]!=='')
-	{
-		$file_content = array();
-		for ($i=0; $i < count($file_list); $i++)
-		{ 
-			$file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
-			$url = dirname(dirname(__FILE__))."\\".str_replace('/', "\\", $file_list[$i]);
-			$fp = fopen($url, 'w');
-			fwrite($fp,$file_content[$i]);
-			fclose($fp);
-      $fp_v = fopen('ver.php', 'w');
-      $content = '<?php
-      define("TC_VER","'.get_version().'")?>';
-      fwrite($fp_v,$content);
-      fclose($fp_v);
-		}
-		header('location:../index.php');
-	}
+  if(!($version == $local_v))
+  {
+    if($file_list[0]!=='')
+    {
+      $file_content = array();
+      for ($i=0; $i < count($file_list); $i++)
+      { 
+        $file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
+        $url = dirname(dirname(__FILE__))."\\".str_replace('/', "\\", $file_list[$i]);
+        $fp = fopen($url, 'w');
+        fwrite($fp,$file_content[$i]);
+        fclose($fp);
+        $fp_v = fopen('ver.php', 'w');
+        $content = '<?php
+        define("TC_VER","'.get_version().'")?>';
+        fwrite($fp_v,$content);
+        fclose($fp_v);
+      }
+      header('location:../index.php');
+    }
+  }
 }
 ?>
 <head>	
