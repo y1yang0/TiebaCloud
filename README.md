@@ -14,7 +14,8 @@
  * 创建应用后上传所有文件即可.
 * 京东云
  * 上传文件后/install安装即可，数据库地址请填写`mysql.jae.jd.com:4066`.
-提醒:完成绑定后你需要为cron.php添加一个监控任务,这里推荐使用[阿里云监控](http://www.aliyun.com/product/jiankong/)和[360云监控](http://jk.cloud.360.cn/)
+
+提醒:完成安装后你需要为cron.php添加一个监控任务,否则云签到不会正常运.这里推荐使用[阿里云监控](http://www.aliyun.com/product/jiankong/)和[360云监控](http://jk.cloud.360.cn/)
 
 更多问题请参考help.html文件或访问http://www.racalinux.cn.
 
