@@ -1,23 +1,19 @@
 #Tieba Cloud
 
 ![test](http://img.shields.io/badge/language-php-orange.svg)    ![test](http://img.shields.io/badge/building-90%-green.svg)<br>
-贴吧云用于百度各种服务;现在暂时只支持贴吧云签到
+贴吧云用于百度各种服务.目前完美支持独立服务器/vps/虚拟主机/京东云.
 
 ##环境要求
 1. php服务器需开启curl扩展以及支持文件写入.
 2. mysql需要支持create,update,select命令
 
 ##安装
-* 独立服务器/VPS/虚拟主机
- * 上传所有文件,进入/install目录进行安装即可.
-* sae
- * 创建应用后上传所有文件即可.
-* 京东云
- * 上传文件后/install安装即可，数据库地址请填写`mysql.jae.jd.com:4066`.
+上传程序后进入`/install`目录即可进行安装.<br><br>
 
-提醒:完成安装后你需要为cron.php添加一个监控任务,否则云签到不会正常运.这里推荐使用[阿里云监控](http://www.aliyun.com/product/jiankong/)和[360云监控](http://jk.cloud.360.cn/)
+提醒:完成安装后你需要为cron.php添加一个监控任务,否则云签到不能使用.<br>
+这里推荐使用[阿里云监控](http://www.aliyun.com/product/jiankong/)和[360云监控](http://jk.cloud.360.cn/)
 
-更多问题请参考help.html文件或访问http://www.racalinux.cn.
+更多问题请访问[racalinux.cn](http://www.racalinux.cn)
 
 ##其他相关
 * 源码遵守GPL发布.
