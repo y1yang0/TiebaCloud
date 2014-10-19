@@ -105,7 +105,7 @@ if(isset($_SESSION['u']))
         		}else{
 					$info = '<div class="row" style="margin:0 auto;"><div class="col-xs-6 col-md-3">
 					<a href="#" class="thumbnail" data-toggle="tooltip" data-placement="left" title="欢迎使用贴吧云。">
-					<img src="'.$re['avastar'].' alt="..."></a></div><p>欢迎，<strong>'.$re['baidu_id'].'</strong>
+					<img src="'.$re['avastar'].' alt="..."></a></div><p>欢迎，<strong>'.$re['baidu_id'].'</strong><a class=" pull-right" href="login.php"><i class="icon-off"></i>登录另一个账号</a>
 					</p><br><p>当你看到这个页面就意味着贴吧云开始为你服务了.</p></div><table class="table table-bordered"><tr>
 					<td class="activite">#1</td><td class="success">云签到自动运行成功！</td></tr><tr><td class="activite">#2</td>
 	  				<td class="info">如果你对贴吧云有任何建议请发送至邮箱1948638989@qq.com</td></tr></table>';
@@ -170,20 +170,19 @@ if(isset($_SESSION['u']))
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 	<link href="stylesheets/styles.css" rel="stylesheet">
+  <link href="stylesheets/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div  class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-    <h1 class="text-center">贴吧云 - 云上的日子</h1>
-    </div>
+<div class=" container col-sm-6 col-sm-offset-3"><br>
+<div class="panel panel-primary ">
+  <div class="panel-body">
+  <ol class="breadcrumb">
+    <li><a href="index.php">TiebaCloud</a></li>
+  <li class="active">Index</li>
+  </ol>
     <?php echo $info;?>
-    <div class="modal-footer">
-        <div class="col-md-12">
-          <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
-        </div>	
-    </div>
+</div>
+        <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
 </div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="javascripts/bootstrap.min.js"></script>
