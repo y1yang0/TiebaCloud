@@ -63,7 +63,7 @@ if(isset($_SESSION['u']))
         			$info ='
 					<div class="alert alert-warning alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">
-					Close</span></button><strong>注意:</strong> 请输入你的百度账号密码以完成绑定</div>
+					Close</span></button><strong>注意:</strong> 请输入你的百度账号密码以完成绑定，如果无法完成绑定请尝试<a href="./public/manual_bind.html">手动绑定</a></div>
 					<div class="modal-body">   
 			        <form class="form-horizontal" role="form" method="post" action="'.$_SERVER['PHP_SELF'] .'">
               		<div class="form-group">
