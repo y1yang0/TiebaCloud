@@ -1,5 +1,6 @@
 <?php header("Content-Type: text/html;charset=utf-8");
 
+//author:racaljk
 class baidu_passport
 {
 	
@@ -104,6 +105,7 @@ class baidu_passport
 	var $cookie;
 }
 
+//author:iicx
 //source on https://github.com/iicx/BaiduUtil,thx;
 class BaiduUtil{
 
