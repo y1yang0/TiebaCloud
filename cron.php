@@ -4,7 +4,7 @@ require('./lib/func.sign.php');
 
 define("N",5);//数值代表每次执行计划任务进行签到的贴吧数目,默认一次签到五个贴吧,最好不要修改它
 
-//set_time_limit(0);如果是独立服务器/域名可以取消注释;
+//set_time_limit(0);如果是独立服务器可以取消注释;
 if (mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD)) {
 	if(mysql_select_db(DB_NAME))
 	{

@@ -1,7 +1,7 @@
 <?php
 function get_version()
 {
-	$ch = curl_init('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/info.api');
+	$ch = curl_init('https://gist.githubusercontent.com/racaljk/b23a70bf9ea4c8cbcfb9/raw/f827d479e38eb8bcfbdaa3cb6b9d44e288a33c18/info.api');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
@@ -14,7 +14,7 @@ function get_version()
 
 function get_update_file()
 {
-	$ch = curl_init('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/info.api');
+	$ch = curl_init('https://gist.githubusercontent.com/racaljk/b23a70bf9ea4c8cbcfb9/raw/f827d479e38eb8bcfbdaa3cb6b9d44e288a33c18/info.api');
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
