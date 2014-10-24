@@ -28,10 +28,10 @@ if(!$con)
 }else{
 	if(mysql_select_db($_POST['db_name']))
 	{
-	    	mysql_query('CREATE TABLE tc_tmp(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,count int )');
+	    mysql_query('CREATE TABLE tc_tmp(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,count int )');
 		mysql_query('CREATE TABLE tc_user(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),password varchar(50),cookie varchar(300))');
 		mysql_query('CREATE TABLE tc_baiduinfo(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,tc_id varchar(15),baidu_id varchar(15),avastar varchar(200))');
-		mysql_query('CREATE TABLE tc_tieba(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),fid varchar(15),url varchar(50))');
+		mysql_query('CREATE TABLE tc_tieba(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),fid varchar(15),url varchar(190))');
 		mysql_query('set names utf8');
 		mysql_query('INSERT INTO tc_user(uid,username,password) VALUES( 0 ,"'.$_POST['admin_name'].'","'.md5($_POST['admin_password']).'")');
 	  	mysql_query('INSERT INTO tc_baiduinfo(tc_id) VALUES("'.$_POST['admin_name'].'")');
