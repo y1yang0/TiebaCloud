@@ -11,7 +11,6 @@ if(filesize('../lib/config.inc.php')>5)
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="../stylesheets/styles.css" rel="stylesheet">
 </head>
 <body>
   <div class=" container"><br>

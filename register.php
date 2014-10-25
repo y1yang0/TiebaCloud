@@ -5,7 +5,6 @@
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-	<link href="stylesheets/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
 </head>
 <body>
@@ -25,7 +24,7 @@
         </div>  
      <form class="form col-md-12 center-block" method="post"action="./lib/account.php">
             <div  class="form-group">
-            <input name="username" class="form-control input-lg" placeholder="输入用户名">
+            <input name="username" class="form-control input-lg" placeholder="输入用户名,不支持中文">
             </div>
             <div  class="form-group">
             <input  name="password" type="password"class="form-control input-lg" placeholder="输入密码">

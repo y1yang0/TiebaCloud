@@ -1,7 +1,6 @@
 <?php
 require('./lib/ver.php');
 require('./lib/bind.php');
-
 if($_POST){
   foreach ($_POST as &$data) {
     $data=trim($data);
@@ -124,7 +123,7 @@ if(isset($_SESSION['u']))
 					<td><i class="icon-trash"></i></td><td>更新我喜欢的贴吧.</td><td><a class="btn btn-primary btn-xs" role="button" href="#update" data-toggle="modal"><i class="icon-trash"></i> 执行更新</a></td>
 					</tr>
 					<tr>
-					<td><i class="icon-user-md"></i></td><td>我是贴吧云管理员,我要进入管理平台.</td><td><a class="btn btn-primary btn-xs" role="button" ><i class="icon-cogs"></i> 点击进入</a></td>
+					<td><i class="icon-user-md"></i></td><td>我是贴吧云管理员,我要进入管理平台.</td><td><a href="admin.php" class="btn btn-primary btn-xs" role="button" ><i class="icon-cogs"></i> 点击进入</a></td>
 					</tr>
 					<tr>
 					<td><i class="icon-github-alt"></i></td><td>希望能允许我获取贴吧云源代码.</td><td><a href="https://github.com/racaljk/tieba_cloud" target="_blank" class="btn btn-primary btn-xs" role="button" ><i class="i icon-github"></i> 查看源码</a></td>
@@ -190,7 +189,6 @@ if(isset($_SESSION['u']))
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-	<link href="stylesheets/styles.css" rel="stylesheet">
   	<link href="stylesheets/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
