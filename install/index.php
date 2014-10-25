@@ -73,6 +73,6 @@ if(filesize('../lib/config.inc.php')>5)
 </div>
 </div>
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="../javascripts/bootstrap.min.js"></script>
 </body>

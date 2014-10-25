@@ -106,9 +106,30 @@ if(isset($_SESSION['u']))
 					$info = '<div class="row" style="margin:0 auto;"><div class="col-xs-6 col-md-3">
 					<a href="#" class="thumbnail" data-toggle="tooltip" data-placement="left" title="欢迎使用贴吧云。">
 					<img src="'.$re['avastar'].' alt="..."></a></div><p>欢迎，<strong>'.$re['baidu_id'].'</strong><a class=" pull-right" href="login.php"><i class="icon-off"></i>登录另一个账号</a>
-					</p><br><p>当你看到这个页面就意味着贴吧云开始为你服务了.</p></div><table class="table table-bordered"><tr>
-					<td class="activite">#1</td><td class="success">云签到自动运行成功！</td></tr><tr><td class="activite">#2</td>
-	  				<td class="info">如果你对贴吧云有任何建议请发送至邮箱1948638989@qq.com</td></tr></table>';
+					</p><br><p>当你看到这个页面就意味着贴吧云开始为你服务了.</p></div>
+					<table class="table table-bordered">
+					<tr class="active">
+					<td >#</td><td>描述</td><td>选项</td>
+					</tr>
+					<tr>
+					<td><i class="icon-edit"></i></td><td>贴吧云签到</td><td><a class="btn btn-primary btn-xs disabled" role="button"><i class="icon-ok"></i> 自动运行</a></td>
+					</tr>
+					<tr>
+					<td><i class="icon-bar-chart"></i></td><td>统计我喜欢的贴吧信息</td><td><a class="btn btn-primary btn-xs" role="button"  href="#status" data-toggle="modal"><i class="icon-eye-open"></i> 查看信息</a></td>
+					</tr>
+					<tr>
+					<td><i class="icon-envelope"></i></td><td>我有好的建议和意见.</td><td><a class="btn btn-primary btn-xs" role="button" href="#feedback" data-toggle="modal"><i class=" icon-share"></i> 点击反馈</a></td>
+					</tr>
+					<tr class="active">
+					<td><i class="icon-trash"></i></td><td>更新我喜欢的贴吧.</td><td><a class="btn btn-primary btn-xs" role="button" href="#update" data-toggle="modal"><i class="icon-trash"></i> 执行更新</a></td>
+					</tr>
+					<tr>
+					<td><i class="icon-user-md"></i></td><td>我是贴吧云管理员,我要进入管理平台.</td><td><a class="btn btn-primary btn-xs" role="button" ><i class="icon-cogs"></i> 点击进入</a></td>
+					</tr>
+					<tr>
+					<td><i class="icon-github-alt"></i></td><td>希望能允许我获取贴吧云源代码.</td><td><a href="https://github.com/racaljk/tieba_cloud" target="_blank" class="btn btn-primary btn-xs" role="button" ><i class="i icon-github"></i> 查看源码</a></td>
+					</tr>
+					</table>';
         		}
         	}else{
         	        			$info ='
@@ -170,23 +191,91 @@ if(isset($_SESSION['u']))
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">
 	<link href="stylesheets/styles.css" rel="stylesheet">
-  <link href="stylesheets/font-awesome.min.css" rel="stylesheet">
+  	<link href="stylesheets/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div class=" container col-sm-6 col-sm-offset-3"><br>
+<div class=" container col-sm-7 col-sm-offset-3"><br>
 <div class="panel panel-primary ">
-  <div class="panel-body">
-  <ol class="breadcrumb">
-    <li><a href="index.php">TiebaCloud</a></li>
-  <li class="active">Index</li>
-  </ol>
-    <?php echo $info;?>
+<div class="panel-body"><ol class="breadcrumb"><li><a href="index.php">TiebaCloud</a></li><li class="active">Index</li></ol>
+<?php echo $info;?>
+</div><p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on<a href="https://github.com/racaljk" target="_blank" > Github</a></p>
+
+<div id="status" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">TiebaCloud/Status  - 贴吧云统计(请耐心等待)</h4>
+			</div>
+
+			<div id="status_content" class="modal-body">
+			</div>
+
+			<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
-        <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
+
+<div id="update" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">TiebaCloud/Update  - 贴吧云账号更新</h4>
+			</div>
+
+			<div id="status_content" class="modal-body">
+			<p>开发中...</p>
+			</div>
+
+			<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+<div id="feedback" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title">TiebaCloud/Update  - 贴吧云意见反馈</h4>
+			</div>
+
+			<div id="status_content" class="modal-body">
+			<p>请前往<a target ="_blank" href="https://github.com/racaljk/tieba_cloud/issues/new">https://github.com/racaljk/tieba_cloud/issues/new</a>写出你的建议/意见,如果你没有GITHUB账号则需要注册一个.
+			<img src="./public/tutorial.png" class="img-responsive img-thumbnail" alt="Responsive image">
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div> 
+	<script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="javascripts/bootstrap.min.js"></script>
+	<script type="text/javascript">
+$(function(){
+    $('#status').click(function(){
+         $.ajax({
+             type: "POST",
+             url: "./lib/operator.php",
+             data: {data:"status"},
+             success: function(data){
+             	$('#status_content').empty(); 
+                $('#status_content').append(data);
+            }
+         });
+    });
+});
+	</script>
 </body>
+
 
   
        

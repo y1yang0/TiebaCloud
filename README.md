@@ -5,7 +5,7 @@
 
 ##环境要求
 1. php服务器需开启curl扩展以及支持文件写入.
-2. mysql需要支持create,update,select命令
+2. mysql需要支持create,update,select,delete命令
 
 ##安装
 上传程序后进入`/install`目录即可进行安装.<br><br>
