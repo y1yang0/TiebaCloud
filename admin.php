@@ -14,7 +14,6 @@ if(isset($_SESSION['u']))
 	header('location:index.php');
 }
 ?>
-
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
@@ -41,7 +40,7 @@ if(isset($_SESSION['u']))
 	      <div class="caption">
 	        <h3><i class="icon-large icon-user"></i>用户管理</h3>
 	        <p>查看贴吧云用户信息</p>
-	        <a href="#" class="btn btn-default" role="button">点击查看</a></p>
+	        <a href="#" class="btn btn-default" role="button"><i class=" icon-circle-arrow-right"></i> 点击查看</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -50,7 +49,7 @@ if(isset($_SESSION['u']))
 	      <div class="caption">
 	        <h3><i class="icon-large icon-check"></i>签到联盟</h3>
 	        <p>加入贴吧云签到联盟</p>
-	        <a href="#sign_league" class="btn btn-default" role="button" data-toggle="modal">查看详情</a></p>
+	        <a href="#sign_league" class="btn btn-default" role="button" data-toggle="modal"><i class=" icon-circle-arrow-right"></i> 查看详情</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -59,12 +58,23 @@ if(isset($_SESSION['u']))
 	      <div class="caption">
 	        <h3><i class="icon-large icon-cloud-download"></i>贴吧云更新</h3>
 	        <p>更新贴吧云到最新版本.</p>
-	        <a href="#update" class="btn btn-default" role="button" data-toggle="modal" >点击更新</a></p>
+	        <a href="#update" class="btn btn-default" role="button" data-toggle="modal" ><i class=" icon-circle-arrow-right"></i> 查看更新</a></p>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 
+	    <div class="row">
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <div class="caption">
+	        <h3><i class="icon-large icon-laptop"></i>站点设置</h3>
+	        <p>配置贴吧云站点</p>
+	        <a href="#setting" class="btn btn-default" role="button" data-toggle="modal"><i class=" icon-circle-arrow-right"></i> 进行配置</a></p>
+	      </div>
+	    </div>
+	  </div>
+	  </div>
         </div>
     <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
 </div> 
@@ -92,6 +102,58 @@ if(isset($_SESSION['u']))
 </div>
 </div>
 
+<div id="setting" class="modal fade">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title">TiebaCloud/Setting </h4>
+</div>
+<div class="modal-body">
+<div class="panel panel-primary">
+ 	<div class="panel-heading">站点注册设置 <small>设置开启/关闭贴吧云注册</small></div>
+  	<div class="panel-body">
+		<div class="row">
+		<div class="col-lg-12"><form method="post" action="./lib/admin.php">
+		<div class="input-group">
+		<?php
+		$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
+		if(!$con)
+		{
+			die('failed to connecting the database.');
+		}else{
+			if(mysql_select_db(DB_NAME))
+			{
+				$res = mysql_query('SELECT * FROM tc_tmp WHERE uid=2');
+				$t = mysql_fetch_array($res);
+				if($t==true)
+				{
+					if($t[1]==='0')
+					{
+						echo '<button class="btn btn-default" type="submit" name="signon">开启贴吧云注册</button>';
+					}else{
+						echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
+					}
+				}else{
+					echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
+				}
+			}
+		}
+		?>
+		</div>
+		</form>
+		</div>
+		</div>
+  	</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <div id="sign_league" class="modal fade">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -109,10 +171,12 @@ if(isset($_SESSION['u']))
 </div>
 <div class="modal-footer">
 <a href="http://www.racalinux.cn/sign_league.php" target="_blank" role="button" class="btn btn-default">查看联盟</a>
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </div>
 </div>
 </div>
+</div>
+
 <script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
 </body>

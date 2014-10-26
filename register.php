@@ -1,7 +1,20 @@
+<?php
+require('./lib/config.inc.php');
+mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
+mysql_select_db(DB_NAME);
+$symbol = mysql_fetch_array(mysql_query('SELECT count FROM tc_tmp WHERE uid=2'));
+if($symbol)
+{
+    if($symbol[0]==='0')
+    {
+        header('location:./public/error.html');
+    }
+}
+?>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>Tieba Cloud - Account Regist</title>
+	<title>Tieba Cloud - Register</title>
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">

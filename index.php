@@ -246,6 +246,7 @@ if(isset($_SESSION['u']))
 			<div id="status_content" class="modal-body">
 			<p>请前往<a target ="_blank" href="https://github.com/racaljk/tieba_cloud/issues/new">https://github.com/racaljk/tieba_cloud/issues/new</a>写出你的建议/意见,如果你没有GITHUB账号则需要注册一个.
 			<img src="./public/tutorial.png" class="img-responsive img-thumbnail" alt="Responsive image">
+			或者<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=1948638989@qq.com">给侠盗小飞机发送邮件</a>
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -1,11 +1,9 @@
-#Tieba Cloud
-
-![test](http://img.shields.io/badge/language-php-orange.svg)    ![test](http://img.shields.io/badge/building-90%-green.svg)<br>
+#Tieba Cloud ![test](http://img.shields.io/badge/build-passing-green.svg)<br>
 贴吧云用于百度各种服务.目前完美支持独立服务器/vps/虚拟主机/京东云.
 
 ##环境要求
 1. php服务器需开启curl扩展以及支持文件写入.
-2. mysql需要支持create,update,select,delete命令
+2. mysql需要支持create,update,select命令
 
 ##安装
 上传程序后进入`/install`目录即可进行安装.<br><br>

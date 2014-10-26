@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 require('config.inc.php');
+require('api.php');
 
 switch ($_POST['data']){
 	case 'status':
@@ -9,7 +10,7 @@ switch ($_POST['data']){
 		$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
 		if(!$con)
 		{
-			die("failed to connecting the database while get data status.");
+			error_tpl('ajax查询时错误','ajax查询时无法连接数据库,请检查config.inc.php文件是否存在.','../index.php');
 		}else{
 			if(mysql_select_db(DB_NAME))
 			{
@@ -27,7 +28,7 @@ switch ($_POST['data']){
 
 	break;
 	default:
-		echo 'forbidden;';
+		error_tpl('访问错误','禁止非post方式直接访问operator.php文件','../index.php');
 	break;
 }
 ?>

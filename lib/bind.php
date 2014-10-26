@@ -8,7 +8,7 @@ require('func.sign.php');
 if(isset($_GET['bindback']))
 {
 	if($_GET['bindback']=='error'){
-		die('绑定错误,请检查用户名密码或者验证码是否正确!');
+		error_tpl('账号绑定错误','无法绑定,请刷新重试或者报告管理员.','../index.php');
 	}else{
 		$bp = new baidu_passport($_GET['bindback']);
 		$result = $bp->get_passport_info();
@@ -40,7 +40,7 @@ if(isset($_GET['bindback']))
 	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
 	if(!$con)
 	{
-		die('account bind error.');
+		error_tpl('数据库连接错误','未能成功连接数据库,请检查config.inc.php文件是否存在','../index.php');
 	}else{
 		if(mysql_select_db(DB_NAME))
 		{

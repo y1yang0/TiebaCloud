@@ -63,4 +63,13 @@ function get_codestring($username)
 	preg_match($regex,$res,$p);
 	return $p[1];
 }
+
+function error_tpl($title,$desc,$back)
+{
+	$content = file_get_contents(dirname(dirname(__FILE__)).'/public/error.html');
+	$content = preg_replace('/\{title\}/',$title,$content);
+	$content = preg_replace('/\{description\}/',$desc,$content);
+	$content = preg_replace('/\{back\}/',$back,$content);
+	die($content);
+}
 ?>

@@ -1,21 +1,23 @@
 <?php
-require_once('config.inc.php');
+require('config.inc.php');
+require('api.php');
+
 if(isset($_POST['reg']))
 { 
 	if(strlen($_POST['username']) < 6||strlen($_POST['password'])<6)
 	{
-		echo '<script type="text/javascript">alert("账号或者密码小于六位,请重新输入.");setTimeout(window.location.href="../register.php",30000); </script>';
+		error_tpl('贴吧云注册错误','你的账号或者密码小于六位数,请重新输入.','../register.php');
 	}else{
 		$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
 		if(!$con)
 		{
-			die("failed to connect database while registing.");
+			error_tpl('贴吧云注册错误','在注册时无法连接数据库,请检查config.inc.php文件是否存在','../register.php');
 		}else{
 			if(mysql_select_db(DB_NAME))
 			{
 				if($res=mysql_fetch_array(mysql_query('SELECT * FROM tc_user WHERE username="'.$_POST['username'].'"')))
 				{
-					echo '账号已经存在';
+					error_tpl('贴吧云注册错误','你输入的用户名已经存在 :(','../register.php');
 				}else{
 				mysql_query('set names utf8');
 				mysql_query('INSERT INTO tc_user(username,password) VALUES("'.$_POST['username'].'","'.md5($_POST['password']).'")');
@@ -32,7 +34,7 @@ if(isset($_POST['reg']))
 	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
 	if(!$con)
 	{
-		die("failed to connect database while registing.");
+		error_tpl('数据库连接错误','未能正确连接数据库,请检查config.inc.php文件是否存在.','../index.php');
 	}else{
 		if(mysql_select_db(DB_NAME))
 		{
@@ -43,10 +45,10 @@ if(isset($_POST['reg']))
 				$_SESSION["u"] = $_POST['log_username'];
 				header('Location:../index.php');
 			}else{
-				die('账号或者密码错误');
+				error_tpl('登录错误','你输入的用户名或者密码错误 :(','../login.php');
 			}
 		}else{
-			die('failed to select database,check your config.inc.php.');
+			error_tpl('数据库选择错误','未能正确选择数据库,请检查config.inc.php文件是否存在或者数据库是否存在.','../index.php');
 		}
 	}
 }else{
