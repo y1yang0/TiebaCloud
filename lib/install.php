@@ -2,7 +2,8 @@
 require('api.php');
 
 $fp = fopen('config.inc.php', 'w');
-if (!$fp) {
+$fp1 = fopen('ver.php', 'w');
+if (!$fp||!$fp1) {
 	error_tpl('致命错误-无法写入config.inc.php','通常是因为你没有创建文件的权限,请考虑更换为京东云或者openshift或者独立主机','../index.php');
 }else {
 	$content = '<?php header("Content-Type: text/html;charset=utf-8");
@@ -13,8 +14,13 @@ if (!$fp) {
 				define("ADMIN_PASSWORD","'.$_POST['admin_password'].'");
 				define("ADMIN_NAME","'.$_POST['admin_name'].'");
 				?>';
+	$content_ver = '<?php
+				define("TC_VER","1.5");
+				?>';
 	fwrite($fp,$content);
+	fwrite($fp1,$content_ver);
     fclose($fp);
+    fclose($fp1);
 }
 
 $con = mysql_connect($_POST['db_ip'],$_POST['db_username'],$_POST['db_password']);
@@ -28,12 +34,10 @@ if(!$con)
 		mysql_query('CREATE TABLE tc_user(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),password varchar(50),cookie varchar(300))');
 		mysql_query('CREATE TABLE tc_baiduinfo(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,tc_id varchar(15),baidu_id varchar(15),avastar varchar(200))');
 		mysql_query('CREATE TABLE tc_tieba(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),fid varchar(15),url varchar(190))');
-		mysql_query('CREATE TABLE tc_conf(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,setting varchar(15))');
 		mysql_query('set names utf8');
 		mysql_query('INSERT INTO tc_user(uid,username,password) VALUES( 0 ,"'.$_POST['admin_name'].'","'.md5($_POST['admin_password']).'")');
 	  	mysql_query('INSERT INTO tc_baiduinfo(tc_id) VALUES("'.$_POST['admin_name'].'")');
 	  	mysql_query('INSERT INTO tc_tmp(count) VALUES(0)');
-	  	mysql_query('INSERT INTO tc_conf(setting) VALUES("1.5")');
 	  	echo '<p>install succeed,enjoy!</p>
 		<script type="text/javascript"> 
 		setTimeout(window.location.href="../login.php",3000); 
@@ -47,12 +51,10 @@ if(!$con)
 		mysql_query('CREATE TABLE tc_user(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),password varchar(50),cookie varchar(300))');
 		mysql_query('CREATE TABLE tc_baiduinfo(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,tc_id varchar(15),baidu_id varchar(15),avastar varchar(200))');
 		mysql_query('CREATE TABLE tc_tieba(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,username varchar(15),fid varchar(15),url varchar(190))');
-		mysql_query('CREATE TABLE tc_conf(uid int NOT NULL AUTO_INCREMENT PRIMARY KEY,setting varchar(15))');
 		mysql_query('set names utf8');
 		mysql_query('INSERT INTO tc_user(uid,username,password) VALUES( 0 ,"'.$_POST['admin_name'].'","'.md5($_POST['admin_password']).'")');
 		mysql_query('INSERT INTO tc_baiduinfo(tc_id) VALUES("'.$_POST['admin_name'].'")');
 		mysql_query('INSERT INTO tc_tmp(count) VALUES(0)');
-		mysql_query('INSERT INTO tc_conf(setting) VALUES("1.5")');
 		echo '<p>you have succeed to install TiebaCloud,enjoy!</p>
 		<script type="text/javascript"> 
 		setTimeout(window.location.href="../login.php",3000); 

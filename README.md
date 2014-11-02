@@ -1,10 +1,9 @@
-#Tieba Cloud Stable
-![test](http://img.shields.io/appveyor/ci/gruntjs/grunt.svg)![test](http://img.shields.io/badge/license-GPL-orange.svg)
+#Tieba Cloud ![test](http://img.shields.io/badge/build-passing-green.svg)<br>
 贴吧云用于百度各种服务.目前完美支持独立服务器/vps/虚拟主机/京东云.
 
 ##环境要求
 1. php服务器需开启curl扩展以及支持文件写入.
-2. mysql需要支持create,update,select,delete命令.
+2. mysql需要支持create,update,select命令
 
 ##安装
 上传程序后进入`/install`目录即可进行安装.<br><br>
@@ -19,7 +18,6 @@
 * 签到脚本每次执行5个吧签到,每次执行大概用时2s.<br>
   可取消签到脚本时间限制并自行修改代码一次签到更多吧(默认每次5个吧))
   ![img](http://pic.yupoo.com/racaljk/E6W6ljde/medish.jpg)
-* 默认贴吧云签到上限是每天7200个贴吧
-  如果数目太多则需要对cron.php多添加几个监控任务
+* 对于独立服务器和虚拟主机的用户可以取消注释````//set_time_limit(0);````
 
 © 2014 racaljk,the great eld ones.

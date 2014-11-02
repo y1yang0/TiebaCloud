@@ -1,10 +1,8 @@
 <?php
-require('api.php');
-require('config.inc.php');
-mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-mysql_select_db(DB_NAME);
+require_once('api.php');
+require('ver.php');
 $version =get_version();
-$local_v = mysql_fetch_array(mysql_query('SELECT setting FROM tc_conf WHERE uid=1'))[0];
+$local_v = TC_VER;
 
 $file_list = get_update_file();
 if(isset($_POST['confirm']))

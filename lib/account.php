@@ -4,9 +4,9 @@ require('api.php');
 
 if(isset($_POST['reg']))
 { 
-	if(strlen($_POST['username']) < 6||strlen($_POST['password'])<6 ||preg_match("/[\x7f-\xff]/", $_POST['username']))
+	if(strlen($_POST['username']) < 6||strlen($_POST['password'])<6)
 	{
-		error_tpl('贴吧云注册错误','你的账号密码小于六位数或者账号含有中文,请重新输入.','../register.php');
+		error_tpl('贴吧云注册错误','你的账号或者密码小于六位数,请重新输入.','../register.php');
 	}else{
 		$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
 		if(!$con)

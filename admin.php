@@ -40,7 +40,7 @@ if(isset($_SESSION['u']))
 	      <div class="caption">
 	        <h3><i class="icon-large icon-user"></i>用户管理</h3>
 	        <p>查看贴吧云用户信息</p>
-	        <a href="#user" class="btn btn-default" role="button" data-toggle="modal" ><i class=" icon-circle-arrow-right"></i> 点击查看</a></p>
+	        <a href="#" class="btn btn-default" role="button"><i class=" icon-circle-arrow-right"></i> 点击查看</a></p>
 	      </div>
 	    </div>
 	  </div>
@@ -89,7 +89,7 @@ if(isset($_SESSION['u']))
 <div class="modal-body">
 <h2>#方法1</h2>
 请点击<a href="https://github.com/racaljk/tieba_cloud/archive/master.zip" target="_blank">这里</a>下载最新的贴吧云系统,然后解压并上传覆盖旧版本即可.<br>
-<strong style="color:red">但切记不要覆盖lib/config.inc.php文件.</strong><br>
+<strong style="color:red">但切记不要覆盖lib/config.inc.php和lib/ver.php文件.</strong><br>
 如果是京东云等系统还需要解压后进入解压的文件并把所有文件打包再上传. <br><br>
 有任何疑问请访问<a href="http://www.racalinux.cn" target="_blank">racalinux.cn</a>
 <h2>#方法2</h2>
@@ -154,51 +154,6 @@ if(isset($_SESSION['u']))
 </div>
 </div>
 
-<div id="user" class="modal fade">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-<h4 class="modal-title">TiebaCloud/User </h4>
-</div>
-<div class="modal-body">
-<?php
-	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-	if(!$con)
-	{
-	    die("error");
-	}else{
-	    if(mysql_select_db(DB_NAME))
-	    {
-	    	$column = mysql_fetch_array(mysql_query('SELECT uid FROM tc_user ORDER BY uid DESC'))[0];
-	    	echo '<form method="post" action="./lib/delete.php"><table class="table table-bordered">
-			<tr class="active">
-			<td >ID</td><td>名称</td><td>操作</td>
-			</tr>';
-			for ($i=0; $i < $column; $i++) { 
-				$data = mysql_fetch_array(mysql_query('SELECT username FROM tc_user WHERE uid ='.($i+1)));
-				$c = mysql_num_rows(mysql_query('SELECT * FROM tc_tieba WHERE username ="'.$data[0].'"'));
-				if($data=='')
-				{
-					continue;
-				}else{
-					echo '<tr><td>'.($i+1).'<td>用户<code>'.$data[0].'</code>拥有<strong><code>'.$c.'</code></strong>个贴吧</td><td><button type="submit" class="btn btn-default" name="'.$data[0].'">删除用户</button></td></tr>';
-				}
-			}
-			echo '</table></form>';
-	    }
-	}
-	    	
-?>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <div id="sign_league" class="modal fade">
 <div class="modal-dialog">
 <div class="modal-content">
@@ -212,7 +167,7 @@ if(isset($_SESSION['u']))
 <h2>#我有什么好处?</h2>
 仅仅是分享精神的层面,没有任何实质好处.
 <h2>#即便如此你还是愿意加入签到联盟吗?</h2>
-<?php echo '<a class="btn btn-default" href="http://www.racalinux.cn/common_sign.php?website='.str_replace('\\', '/',dirname(__FILE__)).'">愿意</a>,这通常没有过多理由.';?>
+<?php echo '<a class="btn btn-default" href="http://www.racalinux.cn/common_sign.php?website='.dirname(__FILE__).'">愿意</a>,这没有理由.';?>
 </div>
 <div class="modal-footer">
 <a href="http://www.racalinux.cn/sign_league.php" target="_blank" role="button" class="btn btn-default">查看联盟</a>
@@ -221,7 +176,6 @@ if(isset($_SESSION['u']))
 </div>
 </div>
 </div>
-
 
 <script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
