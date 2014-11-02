@@ -1,5 +1,4 @@
 <?php
-require('./lib/ver.php');
 require('./lib/bind.php');
 if($_POST){
   foreach ($_POST as &$data) {
@@ -37,22 +36,22 @@ $info = '';
 
 if(isset($_SESSION['u']))
 {
-	if($_SESSION['u']==ADMIN_NAME)
-	{
-		$ver = get_version();
-		$v = TC_VER;
-		if(!($v==$ver))
-		{
-			header('location:./lib/updater.php');
-		}
-	}
 	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
     if(!$con)
     {
-        die("error");
+        error_tpl('连接数据库失败','贴吧云获取用户百度信息时无法正确连接数据库,请检查config.inc.php文件','');
     }else{
         if(mysql_select_db(DB_NAME))
         {
+        	if($_SESSION['u']==ADMIN_NAME)
+			{
+				$ver = get_version();
+				$v = mysql_fetch_array(mysql_query('SELECT setting FROM tc_conf WHERE uid=1'))[0];
+				if(!($v==$ver))
+				{
+					header('location:./lib/updater.php');
+				}
+			}
         	mysql_query('set names utf8');
          	$res = mysql_query('SELECT baidu_id,avastar FROM tc_baiduinfo WHERE tc_id="'.$_SESSION['u'].'"');   		
         	if($re = @mysql_fetch_array($res))
@@ -185,7 +184,7 @@ if(isset($_SESSION['u']))
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>Tieba Cloud Index</title>
+	<title> 贴吧云 </title>
 	<meta name="generator" content="Bootply" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="stylesheets/bootstrap.min.css" rel="stylesheet">

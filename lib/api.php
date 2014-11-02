@@ -50,20 +50,7 @@ function get_file_content($url)
 	return $res;
 }
 
-function get_codestring($username)
-{
-	$url = 'https://passport.baidu.com/v2/api/?logincheck&callback=bdPass.api.login._needCodestringCheckCallback&tpl=mn&charset=utf-8&index=0&username='.$username.'&isphone=false&time='.time();
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
-	$res = curl_exec($ch); 
-	curl_close($ch);
-	$regex = '/codestring":(.*?),/';
-	preg_match($regex,$res,$p);
-	return $p[1];
-}
-
+//唔..似乎超出api的范围了..
 function error_tpl($title,$desc,$back)
 {
 	$content = file_get_contents(dirname(dirname(__FILE__)).'/public/error.html');
