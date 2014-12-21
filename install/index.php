@@ -25,7 +25,9 @@ if(filesize('../lib/config.inc.php')>5)
 		<input name="db_ip" class="form-control input-lg" placeholder="数据库服务器地址">
 		</div>
 		<div class="form-group">
-		<input name="db_username" class="form-control input-lg" placeholder="数据库用户账号"></div><div class="form-group">
+		<input name="db_username" class="form-control input-lg" placeholder="数据库用户账号">
+		</div>
+		<div class="form-group">
 		<input name="db_password" class="form-control input-lg" placeholder="数据库用户密码">
 		</div>
 		<div class="form-group">
