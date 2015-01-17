@@ -170,7 +170,8 @@ if(isset($_SESSION['u']))
 	}else{
 	    if(mysql_select_db(DB_NAME))
 	    {
-	    	$column = mysql_fetch_array(mysql_query('SELECT uid FROM tc_user ORDER BY uid DESC'))[0];
+	    	$res = mysql_fetch_array(mysql_query('SELECT uid FROM tc_user ORDER BY uid DESC'));
+	    	$column = $res[0];
 	    	echo '<form method="post" action="./lib/delete.php"><table class="table table-bordered">
 			<tr class="active">
 			<td >ID</td><td>名称</td><td>操作</td>
