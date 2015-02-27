@@ -56,4 +56,4 @@ if($file_list[0]=='')
 </span><br><br><button class="btn btn-primary" type="submit" name="confirm">更新文件</button></form></div><div class="modal-footer">
 <div class="col-md-12"><p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">
 侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p></div></div></div></div></div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script><script src="../javascripts/bootstrap.min.js"></script></body>
+<script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script><script src="../javascripts/bootstrap.min.js"></script></body>
