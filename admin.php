@@ -1,16 +1,14 @@
 <?php
-require('./lib/config.inc.php');
-require('./lib/api.php');
+require './lib/config.inc.php';
+require './lib/api.php';
 session_start();
-if(isset($_SESSION['u']))
-{
-	if($_SESSION['u']==ADMIN_NAME)
-	{
+if (isset($_SESSION['u'])) {
+	if ($_SESSION['u'] == ADMIN_NAME) {
 
-	}else{
+	} else {
 		header('location:index.php');
 	}
-}else{
+} else {
 	header('location:index.php');
 }
 ?>
@@ -32,8 +30,8 @@ if(isset($_SESSION['u']))
     <li class="active">Admin-Control</li>
     </ol>
     <?php
-    echo '<div class="alert alert-success" role="alert">'.get_announcement().'</div>';
-    ?>
+echo '<div class="alert alert-success" role="alert">' . get_announcement() . '</div>';
+?>
     <div class="row">
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
@@ -77,7 +75,7 @@ if(isset($_SESSION['u']))
 	  </div>
         </div>
     <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
-</div> 
+</div>
 
 <div id="update" class="modal fade">
 <div class="modal-dialog">
@@ -117,29 +115,25 @@ if(isset($_SESSION['u']))
 		<div class="col-lg-12"><form method="post" action="./lib/admin.php">
 		<div class="input-group">
 		<?php
-		$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-		if(!$con)
-		{
-			die('failed to connecting the database.');
-		}else{
-			if(mysql_select_db(DB_NAME))
-			{
-				$res = mysql_query('SELECT * FROM tc_tmp WHERE uid=2');
-				$t = mysql_fetch_array($res);
-				if($t==true)
-				{
-					if($t[1]==='0')
-					{
-						echo '<button class="btn btn-default" type="submit" name="signon">开启贴吧云注册</button>';
-					}else{
-						echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
-					}
-				}else{
-					echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
-				}
+$con = mysqli_connect(DB_IP, DB_USERNAME, DB_PASSWORD);
+if (!$con) {
+	die('failed to connecting the database.');
+} else {
+	if (mysqli_select_db($con, DB_NAME)) {
+		$res = mysqli_query($con, 'SELECT * FROM tc_tmp WHERE uid=2');
+		$t = mysqli_fetch_array($res);
+		if ($t == true) {
+			if ($t[1] === '0') {
+				echo '<button class="btn btn-default" type="submit" name="signon">开启贴吧云注册</button>';
+			} else {
+				echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
 			}
+		} else {
+			echo '<button class="btn btn-default" type="submit" name="signoff">关闭贴吧云注册</button>';
 		}
-		?>
+	}
+}
+?>
 		</div>
 		</form>
 		</div>
@@ -163,33 +157,30 @@ if(isset($_SESSION['u']))
 </div>
 <div class="modal-body">
 <?php
-	$con = mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-	if(!$con)
-	{
-	    die("error");
-	}else{
-	    if(mysql_select_db(DB_NAME))
-	    {
-	    	$res = mysql_fetch_array(mysql_query('SELECT uid FROM tc_user ORDER BY uid DESC'));
-	    	$column = $res[0];
-	    	echo '<form method="post" action="./lib/delete.php"><table class="table table-bordered">
+$con = mysqli_connect(DB_IP, DB_USERNAME, DB_PASSWORD);
+if (!$con) {
+	die("error");
+} else {
+	if (mysqli_select_db($con, DB_NAME)) {
+		$res = mysqli_fetch_array(mysqli_query($con, 'SELECT uid FROM tc_user ORDER BY uid DESC'));
+		$column = $res[0];
+		echo '<form method="post" action="./lib/delete.php"><table class="table table-bordered">
 			<tr class="active">
 			<td >ID</td><td>名称</td><td>操作</td>
 			</tr>';
-			for ($i=0; $i < $column; $i++) { 
-				$data = mysql_fetch_array(mysql_query('SELECT username FROM tc_user WHERE uid ='.($i+1)));
-				$c = mysql_num_rows(mysql_query('SELECT * FROM tc_tieba WHERE username ="'.$data[0].'"'));
-				if($data=='')
-				{
-					continue;
-				}else{
-					echo '<tr><td>'.($i+1).'<td>用户<code>'.$data[0].'</code>拥有<strong><code>'.$c.'</code></strong>个贴吧</td><td><button type="submit" class="btn btn-default" name="'.$data[0].'">删除用户</button></td></tr>';
-				}
+		for ($i = 0; $i < $column; $i++) {
+			$data = mysqli_fetch_array(mysqli_query($con, 'SELECT username FROM tc_user WHERE uid =' . ($i + 1)));
+			$c = mysqli_num_rows(mysqli_query($con, 'SELECT * FROM tc_tieba WHERE username ="' . $data[0] . '"'));
+			if ($data == '') {
+				continue;
+			} else {
+				echo '<tr><td>' . ($i + 1) . '<td>用户<code>' . $data[0] . '</code>拥有<strong><code>' . $c . '</code></strong>个贴吧</td><td><button type="submit" class="btn btn-default" name="' . $data[0] . '">删除用户</button></td></tr>';
 			}
-			echo '</table></form>';
-	    }
+		}
+		echo '</table></form>';
 	}
-	    	
+}
+
 ?>
 </div>
 <div class="modal-footer">
@@ -213,7 +204,7 @@ if(isset($_SESSION['u']))
 <h2>#我有什么好处?</h2>
 仅仅是分享精神的层面,没有任何实质好处.
 <h2>#即便如此你还是愿意加入签到联盟吗?</h2>
-<?php echo '<a class="btn btn-default" href="http://www.racalinux.cn/common_sign.php?website='.str_replace('\\', '/',dirname(__FILE__)).'">愿意</a>,这通常没有过多理由.';?>
+<?php echo '<a class="btn btn-default" href="http://www.racalinux.cn/common_sign.php?website=' . str_replace('\\', '/', dirname(__FILE__)) . '">愿意</a>,这通常没有过多理由.';?>
 </div>
 <div class="modal-footer">
 <a href="http://www.racalinux.cn/sign_league.php" target="_blank" role="button" class="btn btn-default">查看联盟</a>
