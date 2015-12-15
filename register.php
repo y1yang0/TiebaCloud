@@ -1,14 +1,12 @@
 <?php
-require('./lib/config.inc.php');
-mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-mysql_select_db(DB_NAME);
-$symbol = mysql_fetch_array(mysql_query('SELECT count FROM tc_tmp WHERE uid=2'));
-if($symbol)
-{
-    if($symbol[0]==='0')
-    {
-        header('location:./public/error.html');
-    }
+require './lib/config.inc.php';
+$con = mysqli_connect(DB_IP, DB_USERNAME, DB_PASSWORD);
+mysqli_select_db($con, DB_NAME);
+$symbol = mysqli_fetch_array(mysqli_query($con, 'SELECT count FROM tc_tmp WHERE uid=2'));
+if ($symbol) {
+	if ($symbol[0] === '0') {
+		header('location:./public/error.html');
+	}
 }
 ?>
 <head>
@@ -34,7 +32,7 @@ if($symbol)
                 <span class="sr-only">Close</span>
             </button>
             <strong>注意:</strong> 在使用贴吧云前你需要注册一个账号,这有别与百度账号
-        </div>  
+        </div>
      <form class="form col-md-12 center-block" method="post"action="./lib/account.php">
             <div  class="form-group">
             <input name="username" class="form-control input-lg" placeholder="输入用户名,不支持中文">
@@ -50,7 +48,7 @@ if($symbol)
         </div>
         <p align="center">&copy;2014 <a href="http://tieba.baidu.com/home/main?un=%CF%C0%B5%C1%D0%A1%B7%C9%BB%FA&fr=index" target="_blank">侠盗小飞机</a>,sources on <a href="https://github.com/racaljk" target="_blank" >Github</a></p>
 
-</div> 
+</div>
 <script src="//cdnjscn.b0.upaiyun.com/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="javascripts/bootstrap.min.js"></script>
 </body>

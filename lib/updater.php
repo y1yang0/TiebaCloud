@@ -1,30 +1,26 @@
 <?php
-require('api.php');
-require('config.inc.php');
-mysql_connect(DB_IP,DB_USERNAME,DB_PASSWORD);
-mysql_select_db(DB_NAME);
-$version =get_version();
-$local_v = mysql_fetch_array(mysql_query('SELECT setting FROM tc_conf WHERE uid=1'))[0];
+require 'api.php';
+require 'config.inc.php';
+$con = mysqli_connect(DB_IP, DB_USERNAME, DB_PASSWORD);
+mysqli_select_db($con, DB_NAMEi);
+$version = get_version();
+$local_v = mysqli_fetch_array(mysqli_query($con, 'SELECT setting FROM tc_conf WHERE uid=1'))[0];
 
 $file_list = get_update_file();
-if(isset($_POST['confirm']))
-{
-	if(!($version == $local_v))
-	{
-		if($file_list[0]!=='')
-		{
+if (isset($_POST['confirm'])) {
+	if (!($version == $local_v)) {
+		if ($file_list[0] !== '') {
 			$file_content = array();
-			for ($i=0; $i < count($file_list); $i++)
-			{ 
-				$file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/'.$file_list[$i]);
-				$url = dirname(dirname(__FILE__))."\\".str_replace('/', "\\", $file_list[$i]);
+			for ($i = 0; $i < count($file_list); $i++) {
+				$file_content[$i] = get_file_content('https://raw.githubusercontent.com/racaljk/tieba_cloud/master/' . $file_list[$i]);
+				$url = dirname(dirname(__FILE__)) . "\\" . str_replace('/', "\\", $file_list[$i]);
 				$fp = fopen($url, 'w');
-				fwrite($fp,$file_content[$i]);
+				fwrite($fp, $file_content[$i]);
 				fclose($fp);
 				$fp_v = fopen('ver.php', 'w');
 				$content = '<?php
-				define("TC_VER","'.get_version().'")?>';
-				fwrite($fp_v,$content);
+				define("TC_VER","' . get_version() . '")?>';
+				fwrite($fp_v, $content);
 				fclose($fp_v);
 			}
 			header('location:../index.php');
@@ -40,13 +36,12 @@ if(isset($_POST['confirm']))
 <div class="modal-content"><div class="modal-header"><h1 class="text-center">贴吧云 - 更新</h1></div>
 <div class="modal-body"><div class="jumbotron">
 <?php
-if($file_list[0]=='') 
-{
+if ($file_list[0] == '') {
 	echo '<h1>Just enjoy it!</h1>';
-}else{
+} else {
 	echo '<h2>更新列表:</h2><p>';
-	for ($i=0; $i < count($file_list); $i++) { 
-	echo "-".$file_list[$i]."<br>";
+	for ($i = 0; $i < count($file_list); $i++) {
+		echo "-" . $file_list[$i] . "<br>";
 	}
 	echo '</p>';
 }

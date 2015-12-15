@@ -1,6 +1,9 @@
-#Tieba Cloud Stable v1.5
+#Tieba Cloud Stable v1.5.1
 ![test](http://img.shields.io/appveyor/ci/gruntjs/grunt.svg)![test](http://img.shields.io/badge/license-GPL-orange.svg)
 贴吧云用于百度各种服务.目前完美支持独立服务器/vps/虚拟主机/京东云.
+
+# 更新
+* MySQL更换为MySQLi，支持PHP7
 
 ##环境要求
 1. php服务器需开启curl扩展以及支持文件写入.
